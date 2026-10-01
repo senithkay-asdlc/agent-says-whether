@@ -1,0 +1,12 @@
+title Agent Says Whether
+
+component rudeness-checker-webapp as "Rudeness Checker" web-application
+component rudeness-checker-agent as "Rudeness Checker Agent" ai-agent
+
+east user-auth as "Thunder Auth" identity-server
+
+north -> rudeness-checker-webapp
+
+rudeness-checker-webapp -> rudeness-checker-agent
+rudeness-checker-webapp -> user-auth
+rudeness-checker-agent -> user-auth

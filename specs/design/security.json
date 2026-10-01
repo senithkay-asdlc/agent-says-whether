@@ -1,0 +1,28 @@
+{
+  "version": 3,
+  "permissions": [
+    {
+      "resource": "sentences",
+      "component": "rudeness-checker-agent",
+      "description": "Sentence rudeness checks",
+      "actions": [
+        { "handle": "check", "description": "Submit a sentence and receive a rudeness verdict" }
+      ]
+    }
+  ],
+  "groups": [
+    { "name": "Users", "description": "Everyone allowed to use the rudeness checker" }
+  ],
+  "roles": [
+    {
+      "name": "User",
+      "description": "Signs in, submits sentences, and reads their rudeness verdicts.",
+      "stories": [1, 2, 3],
+      "grants": ["sentences:check"],
+      "assignTo": ["Users"]
+    }
+  ],
+  "testUsers": [
+    { "username": "test-user", "roles": ["User"] }
+  ]
+}
