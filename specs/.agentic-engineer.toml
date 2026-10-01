@@ -1,0 +1,4 @@
+apiVersion = "agentic-engineer/v1"
+name = "agent-says-whether"
+createdAt = "2026-10-01T10:47:41Z"
+idea = "a simple agent which says whether the sentence is rude or not."
