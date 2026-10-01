@@ -7,10 +7,34 @@
   "appPath": "rudeness-checker-agent",
   "entrypoint": "deployment/ai-agent",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  "stories": [
+    1,
+    2,
+    3
   ],
   "description": "An ai-agent that judges a single submitted sentence and replies with a plain yes/no rudeness verdict. Holds no conversation history across turns (memory.type: client) because the product is explicitly stateless — each check is independent and nothing is saved. Does not explain, score, or categorize the verdict, and does not accept or process anything other than one sentence per request.",
-  "stories": [1, 2, 3],
-  "skillsPinned": ["agent-building", "thunder-authentication"]
+  "dependencies": [
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "agent-says-whethe-73a9f2d8",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "resource": "USER_AUTH_RESOURCE",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    }
+  ],
+  "exposesAPI": {
+    "auth": "end-user-required"
+  },
+  "skillsPinned": [
+    "agent-building",
+    "thunder-authentication"
+  ]
 }
